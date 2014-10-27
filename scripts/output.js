@@ -12,9 +12,9 @@ new constWithProto().about();
 console.log(createdObj, 'created with Object.create');
 
 var myCar = new Car(2011);
-myCar.drive();
-myCar.stop();
+myCar.drive(); // works because it's on the car prototype
+myCar.stop(); // DOES NOT work because it's on the Honda prototype
 
 var myHonda = new Honda();
-myHonda.drive();
-myHonda.stop();
+myHonda.drive(); // works because it's on the car prototype
+myHonda.stop(); // works because it's on the Honda prototype

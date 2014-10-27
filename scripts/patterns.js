@@ -101,8 +101,13 @@ var Honda = function() {
     Car.apply(this, arguments);
 };
 
-// Inheritance by setting the prototype to the parent's prototype
-Honda.prototype = Car.prototype;
+// A prototype constructor -- using this intermediary layer prevents methods
+// set on the child's prototype from being added to the parent's prototype
+var ctor = function() { };
+ctor.prototype = Car.prototype;
+
+// Inheritance by indirectly setting the prototype to the parent's prototype
+Honda.prototype = new ctor();
 
 Honda.prototype.stop = function() {
     console.log('stooopppp!');
