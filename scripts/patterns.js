@@ -97,8 +97,11 @@ Car.prototype.drive = function() {
 };
 
 // "Child" class
-var Honda = function() {
-    Car.apply(this, arguments);
+var Honda = function(make) {
+    this.make = make;
+
+    // take "make" out of the arguments and pass the rest on to Car
+    Car.apply(this, Array.prototype.splice.call(arguments, 1));
 };
 
 // A prototype constructor -- using this intermediary layer prevents methods
@@ -111,4 +114,8 @@ Honda.prototype = new ctor();
 
 Honda.prototype.stop = function() {
     console.log('stooopppp!');
+};
+
+Car.prototype.crash = function() {
+    console.log('screeeeeechcrash!');
 };
