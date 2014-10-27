@@ -101,7 +101,7 @@ var Honda = function(make) {
     this.make = make;
 
     // take "make" out of the arguments and pass the rest on to Car
-    Car.apply(this, Array.prototype.splice.call(arguments, 1));
+    Car.apply(this, Array.prototype.slice.call(arguments, 1));
 };
 
 // A prototype constructor -- using this intermediary layer prevents methods
